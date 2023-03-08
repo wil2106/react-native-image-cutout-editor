@@ -1,3 +1,6 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+import {
+  ImageCutoutEditor,
+  ImageCutoutEditorRef,
+} from './components/ImageCutoutEditor';
+
+export { ImageCutoutEditor, ImageCutoutEditorRef };

@@ -1,19 +1,26 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-image-cutout-editor';
+import { Button, SafeAreaView, StyleSheet } from 'react-native';
+import {
+  ImageCutoutEditor,
+  ImageCutoutEditorRef,
+} from 'react-native-image-cutout-editor';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+  const ref = React.useRef<ImageCutoutEditorRef>();
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Button
+        title="Open"
+        onPress={() =>
+          ref.current?.open(
+            'https://media.vogue.fr/photos/63282dbd6b2fecf7f6402532/3:4/w_1536,h_2048,c_limit/Fc9-RcUXgAEgljY.jpeg'
+            //'https://www.okvoyage.com/wp-content/uploads/2019/11/ski-810x540.jpg'
+          )
+        }
+      />
+      <ImageCutoutEditor ref={ref} onEdit={() => {}} onCancel={() => {}} />
+    </SafeAreaView>
   );
 }
 
